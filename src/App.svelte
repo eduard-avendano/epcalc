@@ -61,21 +61,21 @@
   $: Time_to_death     = 32
   $: logN              = Math.log(50e6)
   $: N                 = Math.exp(logN)
-  $: I0                = 1
-  $: R0                = 2.2
-  $: D_incbation       = 8       
+  $: I0                = 35
+  $: R0                = 3.0
+  $: D_incbation       = 5.2       
   $: D_infectious      = 2.9 
   $: D_recovery_mild   = (14 - 2.9)  
   $: D_recovery_severe = (31.5 - 2.9)
   $: D_hospital_lag    = 5
   $: D_death           = Time_to_death - D_infectious 
   $: CFR               = 0.02  
-  $: InterventionTime  = 100  
-  $: OMInterventionAmt = 2/3
+  $: InterventionTime  = 19  
+  $: OMInterventionAmt = 0.5
   $: InterventionAmt   = 1 - OMInterventionAmt
-  $: Time              = 220
+  $: Time              = 400
   $: Xmax              = 110000
-  $: dt                = 2
+  $: dt                = 4
   $: P_SEVERE          = 0.2
   $: duration          = 7*12*1e10
 
@@ -595,7 +595,7 @@
 
 </style>
 
-<h2>Calculadora epidémica</h2>
+<h2>COVID19 en Colombia - Simulador</h2>
 
 <div class="chart" style="display: flex; max-width: 1120px">
 
@@ -657,7 +657,7 @@
                                  </div>
           </div>
         </div>
-        <div class="legendtext" style="text-align: right; width:105px; left:-111px; top: 4px; position:relative;">Número de infecciosos <i>activamente</i> circulando.</div>
+        <div class="legendtext" style="text-align: right; width:105px; left:-111px; top: 4px; position:relative;">Número de infecciosos activamente circulando.</div>
 
 
       </div>
@@ -934,19 +934,19 @@
   <div class = "row">
 
     <div class="column">
-      <div class="paneltitle">Parámetros de la población</div>
+      <div class="paneltitle">Población</div>
       <div class="paneldesc" style="height:30px">Tamaño de la población.<br></div>
       <div class="slidertext">{format(",")(Math.round(N))}</div>
       <input class="range" style="margin-bottom: 8px"type=range bind:value={logN} min={5} max=25 step=0.01>
-      <div class="paneldesc" style="height:29px; border-top: 1px solid #EEE; padding-top: 10px">Número de infecciones iniciales.<br></div>
+      <div class="paneldesc" style="height:29px; border-top: 1px solid #EEE; padding-top: 10px">Infecciones iniciales.<br></div>
       <div class="slidertext">{I0}</div>
       <input class="range" type=range bind:value={I0} min={1} max=10000 step=1>
     </div>
 
     <div class="column">
       <div class="paneltext">
-      <div class="paneltitle">Número de propagación </div>
-      <div class="paneldesc">Medida de contagio: número de infecciones secundarias que cada individuo infectado produce. <br></div>
+      <div class="paneltitle">Propagación </div>
+      <div class="paneldesc">Número de infecciones que cada individuo infectado produce. <br></div>
       </div>
       <div class="slidertext">{R0}</div>
       <input class="range" type=range bind:value={R0} min=0.01 max=10 step=0.01> 
@@ -954,10 +954,10 @@
 
     <div class="column">
       <div class="paneltitle">Tiempos de transmisión</div>
-      <div class="paneldesc" style="height:30px">Duración del periodo de incubación.<br></div>
+      <div class="paneldesc" style="height:30px">Periodo de incubación<br></div>
       <div class="slidertext">{(D_incbation).toFixed(2)} días</div>
       <input class="range" style="margin-bottom: 8px"type=range bind:value={D_incbation} min={0.15} max=24 step=0.0001>
-      <div class="paneldesc" style="height:29px; border-top: 1px solid #EEE; padding-top: 10px">Duración potencial infección por paciente.<br></div>
+      <div class="paneldesc" style="height:29px; border-top: 1px solid #EEE; padding-top: 10px">Periodo de infección<br></div>
       <div class="slidertext">{D_infectious} Días</div>
       <input class="range" type=range bind:value={D_infectious} min={0} max=24 step=0.01>
     </div>
