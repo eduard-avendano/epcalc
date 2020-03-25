@@ -63,7 +63,7 @@
   $: N                 = Math.exp(logN)
   $: I0                = 1
   $: R0                = 2.2
-  $: D_incbation       = 5.2       
+  $: D_incbation       = 8       
   $: D_infectious      = 2.9 
   $: D_recovery_mild   = (14 - 2.9)  
   $: D_recovery_severe = (31.5 - 2.9)
@@ -945,7 +945,7 @@
 
     <div class="column">
       <div class="paneltext">
-      <div class="paneltitle">Número de reproducción básico </div>
+      <div class="paneltitle">Número de propagación </div>
       <div class="paneldesc">Medida de contagio: número de infecciones secundarias que cada individuo infectado produce. <br></div>
       </div>
       <div class="slidertext">{R0}</div>
@@ -957,7 +957,7 @@
       <div class="paneldesc" style="height:30px">Duración del periodo de incubación.<br></div>
       <div class="slidertext">{(D_incbation).toFixed(2)} días</div>
       <input class="range" style="margin-bottom: 8px"type=range bind:value={D_incbation} min={0.15} max=24 step=0.0001>
-      <div class="paneldesc" style="height:29px; border-top: 1px solid #EEE; padding-top: 10px">Duración de paciente infeccioso.<br></div>
+      <div class="paneldesc" style="height:29px; border-top: 1px solid #EEE; padding-top: 10px">Duración potencial infección por paciente.<br></div>
       <div class="slidertext">{D_infectious} Días</div>
       <input class="range" type=range bind:value={D_infectious} min={0} max=24 step=0.01>
     </div>
@@ -965,7 +965,7 @@
     <div style="flex: 0 0 20; width:20px"></div>
 
     <div class="column">
-      <div class="paneltitle">Estadísticas de Morbilidad</div>
+      <div class="paneltitle">Estadísticas de Mortalidad</div>
       <div class="paneldesc" style="height:30px">Tasa de mortalidad.<br></div>
       <div class="slidertext">{(CFR*100).toFixed(2)} %</div>
       <input class="range" style="margin-bottom: 8px" type=range bind:value={CFR} min={0} max=1 step=0.0001>
